@@ -5,21 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class MainActivity extends Activity {
+public class SplashScreenActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.splash_screen_layout);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, KategoryActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this, KategoryActivity.class);
                 startActivity(intent);
                 finish();
             }
-        }, 5*1000);
+        }, 3*1000);
     }
 }

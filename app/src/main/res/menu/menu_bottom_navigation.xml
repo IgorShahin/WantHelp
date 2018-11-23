@@ -3,21 +3,20 @@
     <item
         android:id="@+id/action_news"
         android:icon="@drawable/news"
-        android:title="Новости" />
+        android:title="@string/news_menu" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/searh"
-        android:title="Поиск" />
+        android:title="@string/search_menu" />
     <item
-
-        android:title="Помощь"/>
+        android:title="@string/help_menu" />
     <item
         android:id="@+id/action_history"
         android:icon="@drawable/history"
-        android:title="История" />
+        android:title="@string/history_menu" />
     <item
         android:id="@+id/action_profile"
         android:icon="@drawable/profile"
-        android:title="Профиль" />
+        android:title="@string/profile_menu" />
 
 </menu>

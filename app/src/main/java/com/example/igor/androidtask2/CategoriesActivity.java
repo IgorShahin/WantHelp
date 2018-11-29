@@ -3,6 +3,7 @@ package com.example.igor.androidtask2;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,13 +18,9 @@ public class CategoriesActivity extends Activity {
 
     final static int CATEGORIES_LAYOUT_SPAN_COUNT   =   2;
 
-    final static String CATEGORY_NAME_TWO_COUNT     = "Взрослые";
-    final static String CATEGORY_NAME_THREE_COUNT   = "Пожилые";
-    final static String CATEGORY_NAME_FOUR_COUNT     = "Животные";
-    final static String CATEGORY_NAME_FIVE_COUNT    = "Мероприятия";
-
     private Toolbar toolbar;
     private RecyclerView recyclerCategories;
+    private BottomNavigationView menuNavigation;
 
     ArrayList<CategoryEntity> categoryEntities = new ArrayList<>();
 
@@ -32,6 +29,7 @@ public class CategoriesActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.categories_layout);
+
 
         recyclerCategories = findViewById(R.id.recyclerCategory);
         CategoriesAdapter categoriesAdapter = new CategoriesAdapter(getCategories());
@@ -50,10 +48,10 @@ public class CategoriesActivity extends Activity {
 
     public ArrayList<CategoryEntity> getCategories() {
         categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.invalid_name), getResources().getString(R.string.Children)));
-        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.adults), "Взрослые"));
-        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.aged), "Пожилые"));
-        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.animals), "Животные"));
-        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.arrangement), "Мероприятия"));
+        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.adults), getResources().getString(R.string.Adults)));
+        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.aged), getResources().getString(R.string.Aged)));
+        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.animals), getResources().getString(R.string.Animals)));
+        categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.arrangement), getResources().getString(R.string.Arrangement)));
 
         return categoryEntities;
     }

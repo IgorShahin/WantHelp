@@ -9,5 +9,12 @@
     <string name="loadingSplashScreen">Загрузка...</string>
     <string name="subtitleText">Выберите категорию помощи</string>
 
-    <string name="Children">"Дети"</string>
+    <string name="Children">Дети</string>
+    <string name="Adults">Взрослые</string>
+    <string name="Aged">Пожилые</string>
+    <string name="Animals">Животные</string>
+    <string name="Arrangement">Мероприятия</string>
+
+
+    <string name="text_profile">Профиль</string>
 </resources>

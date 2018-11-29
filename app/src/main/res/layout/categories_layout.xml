@@ -28,6 +28,8 @@
 
     </android.support.v7.widget.Toolbar>
 
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerCategory"
         android:layout_width="wrap_content"
@@ -51,10 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_bottom_navigation">
-
-    </android.support.design.widget.BottomNavigationView>
-
+        app:menu="@menu/menu_bottom_navigation"/>
 
     <TextView
         android:id="@+id/subtitle"

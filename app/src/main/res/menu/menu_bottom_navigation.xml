@@ -9,6 +9,7 @@
         android:icon="@drawable/searh"
         android:title="@string/search_menu" />
     <item
+        android:icon="@drawable/heart"
         android:title="@string/help_menu" />
     <item
         android:id="@+id/action_history"

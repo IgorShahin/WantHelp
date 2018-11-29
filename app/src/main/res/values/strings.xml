@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WantHelp</string>
+    <string name="titleToolBar">Помочь</string>
+    <string name="news_menu">Новости</string>
+    <string name="search_menu">Поиск</string>
+    <string name="history_menu">История</string>
+    <string name="profile_menu">Профиль</string>
+    <string name="help_menu">Помощь</string>
+    <string name="loadingSplashScreen">Загрузка...</string>
+    <string name="subtitleText">Выберите категорию помощи</string>
+
+    <string name="Children">"Дети"</string>
+</resources>

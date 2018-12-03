@@ -20,7 +20,6 @@ public class CategoriesActivity extends Activity {
 
     private Toolbar toolbar;
     private RecyclerView recyclerCategories;
-    private BottomNavigationView menuNavigation;
 
     ArrayList<CategoryEntity> categoryEntities = new ArrayList<>();
 

@@ -4,25 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/text_profile"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/ColorMenu"
-            android:textSize="21sp"
-            android:textStyle="bold" />
-    </android.support.v7.widget.Toolbar>
+    android:layout_height="wrap_content">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -282,16 +264,19 @@
                 tools:ignore="MissingConstraints,Orientation"
                 tools:layout_editor_absoluteX="46dp"></LinearLayout>
 
-            <Button
+            <android.support.design.button.MaterialButton
                 android:id="@+id/button"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="781dp"
                 android:layout_marginBottom="140dp"
                 android:background="#66a636"
                 android:text="Выйти из аккаунта"
                 android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="@color/ColorMenu"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

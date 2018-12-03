@@ -1,7 +1,5 @@
 package com.example.igor.androidtask2.adapter;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,8 +15,6 @@ import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder> {
 
-    //private ArrayList<Drawable> categoryImage;
-    //private ArrayList<String> categoryText;
     private ArrayList<CategoryEntity> listCategories;
 
     public CategoriesAdapter(ArrayList<CategoryEntity> listCategories) {

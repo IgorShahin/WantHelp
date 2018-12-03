@@ -1,20 +1,22 @@
 package com.example.igor.androidtask2;
 
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.igor.androidtask2.adapter.CategoriesAdapter;
 import com.example.igor.androidtask2.entity.CategoryEntity;
 
 import java.util.ArrayList;
 
-public class CategoriesActivity extends Activity {
+public class CategoriesFragment extends Fragment {
 
     final static int CATEGORIES_LAYOUT_SPAN_COUNT   =   2;
 
@@ -23,26 +25,31 @@ public class CategoriesActivity extends Activity {
 
     ArrayList<CategoryEntity> categoryEntities = new ArrayList<>();
 
+    public static CategoriesFragment newInstance(){
+        return new CategoriesFragment();
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        setContentView(R.layout.categories_layout);
+        View v = inflater.inflate(R.layout.categories_layout, container, false);
 
-
-        recyclerCategories = findViewById(R.id.recyclerCategory);
+        recyclerCategories = v.findViewById(R.id.recyclerCategory);
         CategoriesAdapter categoriesAdapter = new CategoriesAdapter(getCategories());
-        recyclerCategories.setLayoutManager(new GridLayoutManager(this, CATEGORIES_LAYOUT_SPAN_COUNT));
+        recyclerCategories.setLayoutManager(new GridLayoutManager(v.getContext(), CATEGORIES_LAYOUT_SPAN_COUNT));
         recyclerCategories.setHasFixedSize(true);
         recyclerCategories.setAdapter(categoriesAdapter);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.icon_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+//        toolbar = v.findViewById(R.id.toolb);
+//        toolbar.setNavigationIcon(R.drawable.icon_back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
+
+        return v;
     }
 
     public ArrayList<CategoryEntity> getCategories() {

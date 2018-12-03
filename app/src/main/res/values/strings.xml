@@ -16,5 +16,6 @@
     <string name="Arrangement">Мероприятия</string>
 
 
-    <string name="text_profile">Профиль</string>
+    <string name="text_toolbar_profile">Профиль</string>
+    <string name="text_toolbar_heart">Помочь</string>
 </resources>

@@ -16,10 +16,6 @@ public class CategoryEntity {
         return drawableImage;
     }
 
-    public void setDrawableImage(Drawable drawableImage) {
-        this.drawableImage = drawableImage;
-    }
-
     public String getText() {
         return text;
     }

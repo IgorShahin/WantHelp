@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ public class CategoriesFragment extends Fragment {
 
     final static int CATEGORIES_LAYOUT_SPAN_COUNT   =   2;
 
-    private Toolbar toolbar;
     private RecyclerView recyclerCategories;
 
     ArrayList<CategoryEntity> categoryEntities = new ArrayList<>();
@@ -40,14 +38,6 @@ public class CategoriesFragment extends Fragment {
         recyclerCategories.setLayoutManager(new GridLayoutManager(v.getContext(), CATEGORIES_LAYOUT_SPAN_COUNT));
         recyclerCategories.setHasFixedSize(true);
         recyclerCategories.setAdapter(categoriesAdapter);
-
-//        toolbar = v.findViewById(R.id.toolb);
-//        toolbar.setNavigationIcon(R.drawable.icon_back);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            }
-//        });
 
         return v;
     }

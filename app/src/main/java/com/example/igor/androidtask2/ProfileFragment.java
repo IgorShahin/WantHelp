@@ -16,7 +16,11 @@ public class ProfileFragment extends Fragment {
     ImageView profileImage;
 
     public static ProfileFragment newInstance(){
-        return new ProfileFragment();
+        Bundle args = new Bundle();
+        ProfileFragment fragment = new ProfileFragment();
+        fragment.setArguments(args);
+
+        return fragment;
     }
 
     @Nullable

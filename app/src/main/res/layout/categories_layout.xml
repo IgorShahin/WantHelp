@@ -6,6 +6,28 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimaryDark"
+        app:contentInsetStart="0dp"
+        app:titleTextAppearance="@style/Base.V7.Widget.AppCompat.Toolbar">
+
+        <TextView
+            android:id="@+id/text_toolbarCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/titleToolBar"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/ColorMenu"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
@@ -21,8 +43,9 @@
         android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCategories"
         tools:targetApi="jelly_bean" />
 
     <android.support.v7.widget.RecyclerView

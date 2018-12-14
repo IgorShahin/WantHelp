@@ -79,6 +79,7 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.searchMenu).setVisible(false);
+        menu.findItem(R.id.profileMenu).setVisible(false);
         super.onPrepareOptionsMenu(menu);
     }
 }

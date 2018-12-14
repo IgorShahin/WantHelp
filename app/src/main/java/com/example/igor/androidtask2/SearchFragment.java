@@ -57,7 +57,9 @@ public class SearchFragment extends Fragment {
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
+
         menu.findItem(R.id.searchMenu).setVisible(true);
+        menu.findItem(R.id.profileMenu).setVisible(false);
         super.onPrepareOptionsMenu(menu);
     }
 }

@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_search, menu);
         MenuItem menuItem = menu.findItem(R.id.searchMenu);
         materialSearchView.setMenuItem(menuItem);
+
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        menu.findItem(R.id.profileMenu);
         return super.onCreateOptionsMenu(menu);
     }
 }

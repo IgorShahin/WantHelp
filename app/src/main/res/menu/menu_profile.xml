@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/searchMenu"
+        android:id="@+id/profileMenu"
         android:title="Введите название организации"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/ic_action_action_search" />
+        android:icon="@drawable/edit" />
+
 </menu>

@@ -1,6 +1,5 @@
 package com.example.igor.androidtask2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,8 +8,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.igor.androidtask2.adapter.CategoriesAdapter;
 import com.example.igor.androidtask2.entity.CategoryEntity;
@@ -22,7 +23,6 @@ public class CategoriesFragment extends Fragment {
     final static int CATEGORIES_LAYOUT_SPAN_COUNT   =   2;
 
     private RecyclerView recyclerCategories;
-    private Toolbar toolbar;
 
     ArrayList<CategoryEntity> categoryEntities = new ArrayList<>();
 
@@ -32,6 +32,13 @@ public class CategoriesFragment extends Fragment {
         fragment.setArguments(args);
 
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -46,14 +53,13 @@ public class CategoriesFragment extends Fragment {
         recyclerCategories.setHasFixedSize(true);
         recyclerCategories.setAdapter(categoriesAdapter);
 
-        toolbar = v.findViewById(R.id.toolbarCategories);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Помощь");
+
+        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
+        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("finish", true);
+                getActivity().finish();
             }
         });
 
@@ -68,5 +74,11 @@ public class CategoriesFragment extends Fragment {
         categoryEntities.add(new CategoryEntity(getResources().getDrawable(R.drawable.arrangement), getResources().getString(R.string.Arrangement)));
 
         return categoryEntities;
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.searchMenu).setVisible(false);
+        super.onPrepareOptionsMenu(menu);
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WantHelp</string>
+    <string name="app_name"></string>
     <string name="titleToolBar">Помочь</string>
     <string name="news_menu">Новости</string>
     <string name="search_menu">Поиск</string>

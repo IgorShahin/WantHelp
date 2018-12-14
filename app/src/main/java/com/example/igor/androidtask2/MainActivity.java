@@ -4,11 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity {
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
+public class MainActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private MaterialSearchView materialSearchView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,7 +25,6 @@ public class MainActivity extends FragmentActivity {
                 case R.id.fragment_news:
                     return true;
                 case R.id.fragment_search:
-
                     loadFragment(SearchFragment.newInstance());
                     return true;
                 case R.id.fragment_heart: {
@@ -43,6 +49,10 @@ public class MainActivity extends FragmentActivity {
 
         setContentView(R.layout.main_layout);
 
+        toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
+
+        materialSearchView = findViewById(R.id.searchView);
 
         BottomNavigationView navigationView = findViewById(R.id.menu);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -54,5 +64,13 @@ public class MainActivity extends FragmentActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fl_content, fragment);
         ft.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem menuItem = menu.findItem(R.id.searchMenu);
+        materialSearchView.setMenuItem(menuItem);
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -6,28 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarProfile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:background="@color/colorPrimaryDark"
-                app:contentInsetStart="0dp"
-                app:titleTextAppearance="@style/Base.V7.Widget.AppCompat.Toolbar">
-
-                <TextView
-                    android:id="@+id/text_toolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/text_toolbar_profile"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textColor="@color/ColorMenu"
-                    android:textSize="21sp"
-                    android:textStyle="bold" />
-
-            </android.support.v7.widget.Toolbar>
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -45,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/image_man"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="16dp" />
 

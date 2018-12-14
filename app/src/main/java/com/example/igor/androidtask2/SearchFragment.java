@@ -6,15 +6,20 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.igor.androidtask2.adapter.SearchAdapter;
 import com.example.igor.androidtask2.adapter.TabsPagerFragmentAdapter;
+import com.example.igor.androidtask2.entity.SearchEntity;
+
+import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 

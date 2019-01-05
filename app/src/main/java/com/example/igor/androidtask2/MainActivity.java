@@ -3,12 +3,14 @@ package com.example.igor.androidtask2;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private MaterialSearchView materialSearchView;
+    private BottomNavigationView navigationView;
+    private FloatingActionButton heartButton;
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (getIntent().getBooleanExtra("finish", false)) finish();
 
+
         setContentView(R.layout.main_layout);
 
         toolbar = findViewById(R.id.toolBar);
@@ -54,10 +59,17 @@ public class MainActivity extends AppCompatActivity {
 
         materialSearchView = findViewById(R.id.searchView);
 
-        BottomNavigationView navigationView = findViewById(R.id.menu);
+        navigationView = findViewById(R.id.menu);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         navigationView.setSelectedItemId(R.id.fragment_heart);
 
+        heartButton = findViewById(R.id.heartButton);
+        heartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigationView.setSelectedItemId(R.id.fragment_heart);
+            }
+        });
     }
 
     private void loadFragment(Fragment fragment){
@@ -75,5 +87,19 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_profile, menu);
         menu.findItem(R.id.profileMenu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("SelectedItemId", navigationView.getSelectedItemId());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        int selectedItemId = savedInstanceState.getInt("SelectedItemId");
+        navigationView.setSelectedItemId(selectedItemId);
+
     }
 }

@@ -1,8 +1,10 @@
 package com.example.igor.androidtask2;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,7 +39,6 @@ public class CategoriesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
     }
 
@@ -54,6 +55,7 @@ public class CategoriesFragment extends Fragment {
         recyclerCategories.setAdapter(categoriesAdapter);
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Помощь");
+        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(199,220,179));
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationOnClickListener(new View.OnClickListener() {

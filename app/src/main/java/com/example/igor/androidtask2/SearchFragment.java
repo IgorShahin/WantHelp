@@ -1,8 +1,10 @@
 package com.example.igor.androidtask2;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -53,11 +55,25 @@ public class SearchFragment extends Fragment {
         tabLayout = v.findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
+        setRetainInstance(true);
+
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Поиск");
+
+        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(255,255,255));
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
 
+        if(savedInstanceState != null){
+            int selectItemTab = savedInstanceState.getInt("SelectTab");
+        }
+
         return v;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("SelectTab", tabLayout.getSelectedTabPosition());
     }
 
     @Override

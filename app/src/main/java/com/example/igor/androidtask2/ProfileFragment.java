@@ -1,8 +1,10 @@
 package com.example.igor.androidtask2;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -30,7 +32,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
     }
 
@@ -47,6 +48,8 @@ public class ProfileFragment extends Fragment {
         });
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Профиль");
+
+        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(255,255,255));
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
 

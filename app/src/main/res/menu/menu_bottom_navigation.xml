@@ -15,7 +15,6 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/fragment_heart"
-        android:icon="@drawable/heart"
         android:title="@string/help_menu"
         android:enabled="true"
         app:showAsAction="ifRoom"/>

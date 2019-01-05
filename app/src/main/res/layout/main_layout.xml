@@ -23,19 +23,54 @@
         android:id="@+id/fl_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/menu"
+        app:layout_constraintBottom_toTopOf="@id/menuPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"></android.support.constraint.ConstraintLayout>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/menu"
-        android:layout_width="0dp"
+
+    <FrameLayout
+        android:id="@+id/menuPanel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemBackground="@color/ColorMenu"
-        app:labelVisibilityMode="labeled"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:itemBackground="@color/ColorMenu"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_bottom_navigation"></android.support.design.widget.BottomNavigationView>
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="54dp"
+        android:layout_height="27.5dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/oval"
+        app:layout_constraintBottom_toBottomOf="@+id/menuPanel"
+        app:layout_constraintEnd_toEndOf="@+id/menuPanel"
+        app:layout_constraintStart_toStartOf="@+id/menuPanel" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/heartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="27dp"
+        android:outlineSpotShadowColor="@color/ColorMenu"
+        android:src="@drawable/heart"
+        app:backgroundTint="#fe7460"
+        app:elevation="0dp"
+        app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_navigation"
-        tools:ignore="MissingConstraints"></android.support.design.widget.BottomNavigationView>
+        app:layout_constraintEnd_toEndOf="@+id/menuPanel"
+        app:layout_constraintStart_toStartOf="@+id/menuPanel" />
+
 
 </android.support.constraint.ConstraintLayout>

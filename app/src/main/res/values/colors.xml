@@ -8,4 +8,6 @@
     <color name="ColorMenu">#ffffff</color>
     <color name="black__38">#61000000</color>
     <color name="leaf">#66a636</color>
+    <color name="floatingActionRed">#fe7460</color>
+    <color name="floatingActionGreen">#66a636</color>
 </resources>

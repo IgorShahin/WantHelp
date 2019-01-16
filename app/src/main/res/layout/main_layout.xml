@@ -33,15 +33,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             app:itemBackground="@color/ColorMenu"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,27 +49,40 @@
     </FrameLayout>
 
     <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/bar_shadow"
+        app:layout_constraintBottom_toTopOf="@+id/menuPanel" />
+    <View
         android:layout_width="54dp"
         android:layout_height="27.5dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/oval"
         app:layout_constraintBottom_toBottomOf="@+id/menuPanel"
         app:layout_constraintEnd_toEndOf="@+id/menuPanel"
         app:layout_constraintStart_toStartOf="@+id/menuPanel" />
 
-    <android.support.design.widget.FloatingActionButton
+    <ImageButton
         android:id="@+id/heartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/button_red_heart"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="27dp"
-        android:outlineSpotShadowColor="@color/ColorMenu"
         android:src="@drawable/heart"
-        app:backgroundTint="#fe7460"
-        app:elevation="0dp"
-        app:fabSize="mini"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/menuPanel"
-        app:layout_constraintStart_toStartOf="@+id/menuPanel" />
+        app:layout_constraintStart_toStartOf="@+id/menuPanel"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:src="@drawable/shadow"
+        app:layout_constraintBottom_toBottomOf="@+id/heartButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

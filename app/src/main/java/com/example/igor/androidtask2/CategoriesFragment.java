@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.igor.androidtask2.adapter.CategoriesAdapter;
@@ -55,7 +56,7 @@ public class CategoriesFragment extends Fragment {
         recyclerCategories.setAdapter(categoriesAdapter);
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Помощь");
-        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(199,220,179));
+        ((ImageButton)getActivity().findViewById(R.id.heartButton)).setBackgroundResource(R.drawable.button_green_heart);
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationOnClickListener(new View.OnClickListener() {

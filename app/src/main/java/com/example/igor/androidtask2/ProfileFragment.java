@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,7 +50,7 @@ public class ProfileFragment extends Fragment {
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Профиль");
 
-        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(255,255,255));
+        ((ImageButton)getActivity().findViewById(R.id.heartButton)).setBackgroundResource(R.drawable.button_red_heart);
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
 

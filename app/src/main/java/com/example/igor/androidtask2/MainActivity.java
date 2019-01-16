@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private MaterialSearchView materialSearchView;
     private BottomNavigationView navigationView;
-    private FloatingActionButton heartButton;
+    private ImageButton heartButton;
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,8 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.main_layout);
 
+
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         materialSearchView = findViewById(R.id.searchView);
 
@@ -100,6 +103,5 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         int selectedItemId = savedInstanceState.getInt("SelectedItemId");
         navigationView.setSelectedItemId(selectedItemId);
-
     }
 }

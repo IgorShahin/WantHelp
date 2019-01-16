@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.igor.androidtask2.adapter.SearchAdapter;
@@ -27,6 +28,8 @@ public class SearchFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+
+    public static String POSITION = "POSITION";
 
     public static SearchFragment newInstance(){
         Bundle args = new Bundle();
@@ -41,39 +44,41 @@ public class SearchFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+        setRetainInstance(true);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.search_layout, container, false);
-
         viewPager = v.findViewById(R.id.viewPager);
         TabsPagerFragmentAdapter adapter = new TabsPagerFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
+        onRestoreInstanceState(savedInstanceState);
 
         tabLayout = v.findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
-        setRetainInstance(true);
-
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Поиск");
 
-        ((FloatingActionButton)getActivity().findViewById(R.id.heartButton)).setColorFilter(Color.rgb(255,255,255));
+        ((ImageButton)getActivity().findViewById(R.id.heartButton)).setBackgroundResource(R.drawable.button_red_heart);
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
 
-        if(savedInstanceState != null){
-            int selectItemTab = savedInstanceState.getInt("SelectTab");
-        }
 
         return v;
+    }
+
+    private void onRestoreInstanceState(Bundle savedInstanceState){
+        if(savedInstanceState!=null){
+            viewPager.setCurrentItem(savedInstanceState.getInt(POSITION));
+        }
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("SelectTab", tabLayout.getSelectedTabPosition());
+        outState.putInt(POSITION, tabLayout.getSelectedTabPosition());
     }
 
     @Override

@@ -18,4 +18,12 @@
 
     <string name="text_toolbar_profile">Профиль</string>
     <string name="text_toolbar_heart">Помочь</string>
+
+    <string-array name="search_NKO">
+        <item>Во имя жизни</item>
+        <item>Благотворительный Фонд В. Потанина</item>
+        <item>Детские домики</item>
+        <item>Мозайка счастья</item>
+        <item>Благотворительный Фонд Алины</item>
+    </string-array>
 </resources>

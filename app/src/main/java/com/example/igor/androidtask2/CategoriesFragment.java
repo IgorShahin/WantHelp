@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.example.igor.androidtask2.adapter.CategoriesAdapter;
 import com.example.igor.androidtask2.entity.CategoryEntity;
 
@@ -56,7 +57,11 @@ public class CategoriesFragment extends Fragment {
         recyclerCategories.setAdapter(categoriesAdapter);
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Помощь");
-        ((ImageButton)getActivity().findViewById(R.id.heartButton)).setBackgroundResource(R.drawable.button_green_heart);
+        getActivity().findViewById(R.id.heartButton).setBackgroundResource(R.drawable.button_green_heart);
+
+        ((FloatingSearchView)getActivity().findViewById(R.id.searchView)).clearQuery();
+
+        getActivity().findViewById(R.id.searchView).setVisibility(View.GONE);
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationOnClickListener(new View.OnClickListener() {

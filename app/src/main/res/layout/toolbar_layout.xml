@@ -9,8 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/leaf"
         app:contentInsetStart="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:titleTextAppearance="@style/Base.V7.Widget.AppCompat.Toolbar">
 
         <TextView
@@ -19,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/ColorMenu"
+            android:textColor="@color/white"
             android:textSize="21sp"
             android:textStyle="bold" />
 

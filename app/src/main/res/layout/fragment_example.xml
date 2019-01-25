@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e8eded"
+    android:background="@color/light_grey_two"
     android:orientation="vertical">
 
     <TextView
@@ -18,7 +18,7 @@
         android:fontFamily="sans-serif"
         android:lineSpacingExtra="6sp"
         android:text="Ключевые слова: мастер-класс, помощь Результаты поиска: 109 мероприятий"
-        android:textColor="#8a000000"
+        android:textColor="@color/black__54"
         android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +32,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="54dp"
-        android:background="#ffffff"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10">

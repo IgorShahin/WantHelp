@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.igor.androidtask2.adapter.SearchAdapter;
 import com.example.igor.androidtask2.entity.SearchEntity;
@@ -25,7 +26,6 @@ public class SearchEventFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.search_event, container, false);
-
         return v;
     }
 }

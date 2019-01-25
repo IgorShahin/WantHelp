@@ -1,14 +1,16 @@
 package com.example.igor.androidtask2.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.example.igor.androidtask2.ExampleFragment;
 import com.example.igor.androidtask2.SearchEventFragment;
 
-public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
+public class TabsPagerFragmentAdapter extends FragmentStatePagerAdapter {
 
     private String[] tabs;
 
@@ -21,6 +23,16 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
         };
     }
 
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        return super.instantiateItem(container, position);
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return POSITION_NONE;
+    }
 
     @Nullable
     @Override
@@ -31,8 +43,9 @@ public class TabsPagerFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int i) {
         switch (i){
-            case 0:
+            case 0:{
                 return SearchEventFragment.newInstance();
+            }
             case 1:
                 return ExampleFragment.newInstance();
         }

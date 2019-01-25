@@ -15,13 +15,16 @@ import android.view.ViewGroup;
 import com.example.igor.androidtask2.adapter.SearchAdapter;
 import com.example.igor.androidtask2.entity.SearchEntity;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ExampleFragment extends Fragment {
 
     private RecyclerView recyclerSearch;
+    private String[] arrList;
 
-    ArrayList<SearchEntity> searchEntities = new ArrayList<>();
+    ArrayList<SearchEntity>  searchEntities = new ArrayList<>();
 
     public static ExampleFragment newInstance(){
         Bundle args = new Bundle();
@@ -41,6 +44,8 @@ public class ExampleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_example, container, false);
 
+        arrList = getResources().getStringArray(R.array.search_NKO);
+
         recyclerSearch = v.findViewById(R.id.recyclerSearch);
         SearchAdapter searchAdapter = new SearchAdapter(getCategories());
         recyclerSearch.setLayoutManager(new LinearLayoutManager(v.getContext()));
@@ -54,11 +59,18 @@ public class ExampleFragment extends Fragment {
     }
 
     public ArrayList<SearchEntity> getCategories() {
-        searchEntities.add(new SearchEntity("Во имя жизни"));
-        searchEntities.add(new SearchEntity("Благотворительный Фонд В. Потанина"));
-        searchEntities.add(new SearchEntity("Детские домики"));
-        searchEntities.add(new SearchEntity("Мозайка счастья"));
-        searchEntities.add(new SearchEntity("Благотворительный Фонд Алины"));
+        SecureRandom secureRandom = new SecureRandom();
+        int randomSizeList = secureRandom.nextInt(arrList.length) + 1;
+
+        ArrayList<Integer> randomElem = new ArrayList<>();
+        for(int i = randomSizeList; i > 0; i--){
+            randomElem.add(i);
+        }
+        Collections.shuffle(randomElem);
+
+        for(int i = randomSizeList; i > 0; i--){
+            searchEntities.add(new SearchEntity(arrList[(randomElem.get(randomElem.size() - i))-1]));
+        }
 
         return searchEntities;
     }

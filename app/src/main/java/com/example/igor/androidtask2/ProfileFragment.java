@@ -1,21 +1,18 @@
 package com.example.igor.androidtask2;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.example.igor.androidtask2.dialog.ProfileDialog;
 
 public class ProfileFragment extends Fragment {
@@ -50,9 +47,13 @@ public class ProfileFragment extends Fragment {
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Профиль");
 
-        ((ImageButton)getActivity().findViewById(R.id.heartButton)).setBackgroundResource(R.drawable.button_red_heart);
+        getActivity().findViewById(R.id.heartButton).setBackgroundResource(R.drawable.button_red_heart);
 
         ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
+
+        ((FloatingSearchView)getActivity().findViewById(R.id.searchView)).clearQuery();
+
+        getActivity().findViewById(R.id.searchView).setVisibility(View.GONE);
 
         return v;
     }

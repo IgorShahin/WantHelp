@@ -3,7 +3,6 @@ package com.example.igor.androidtask2;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,14 +10,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.arlib.floatingsearchview.FloatingSearchView;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private MaterialSearchView materialSearchView;
+    private FloatingSearchView searchView;
     private BottomNavigationView navigationView;
     private ImageButton heartButton;
 
@@ -60,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        materialSearchView = findViewById(R.id.searchView);
+        searchView = findViewById(R.id.searchView);
+        searchView.setQueryTextSize(14);
+        searchView.setQueryTextColor(R.color.black__38);
+        searchView.setDismissOnOutsideClick(true);
 
         navigationView = findViewById(R.id.menu);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -84,8 +88,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-        MenuItem menuItem = menu.findItem(R.id.searchMenu);
-        materialSearchView.setMenuItem(menuItem);
+        MenuItem searchItem = menu.findItem(R.id.searchMenu);
+        searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                searchView.setVisibility(View.VISIBLE);
+
+                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.search_scale_on);
+                searchView.startAnimation(anim);
+
+                return false;
+            }
+        });
 
         getMenuInflater().inflate(R.menu.menu_profile, menu);
         menu.findItem(R.id.profileMenu);
@@ -103,5 +117,18 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         int selectedItemId = savedInstanceState.getInt("SelectedItemId");
         navigationView.setSelectedItemId(selectedItemId);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (searchView.getVisibility() == View.VISIBLE) {
+            searchView.setVisibility(View.GONE);
+
+            Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.search_scale_of);
+            searchView.startAnimation(anim);
+            searchView.clearQuery();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -6,6 +6,6 @@
         android:width="42dp"
         android:height="42dp"/>
     <solid
-        android:color="@color/floatingActionRed"/>
+        android:color="@color/melon"/>
 
 </shape>

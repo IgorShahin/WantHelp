@@ -6,13 +6,14 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp" android:background="#ffffffff">
+    android:padding="10dp" android:background="@color/white">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/dialog_button1"
         android:layout_width="match_parent"
         android:layout_height="73dp"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="left|center"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -44,13 +45,13 @@
             app:layout_constraintStart_toEndOf="@+id/image1"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/dialog_button2"
         android:layout_width="match_parent"
         android:layout_height="73dp"
-        android:orientation="horizontal"
+        android:gravity="left|center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_button1">
 
@@ -83,12 +84,13 @@
             app:layout_constraintStart_toEndOf="@+id/image2"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/dialog_button3"
         android:layout_width="match_parent"
         android:layout_height="73dp"
+        android:gravity="left|center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_button2"
         tools:ignore="MissingConstraints">
@@ -122,7 +124,7 @@
             app:layout_constraintStart_toEndOf="@+id/image3"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 
 

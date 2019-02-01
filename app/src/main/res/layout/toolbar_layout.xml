@@ -19,11 +19,7 @@
             android:id="@+id/text_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@color/white"
-            android:textSize="21sp"
-            android:textStyle="bold" />
+            style="@style/TextStyle2" />
 
     </android.support.v7.widget.Toolbar>
 

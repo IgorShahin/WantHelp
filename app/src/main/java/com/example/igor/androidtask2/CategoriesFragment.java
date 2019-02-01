@@ -1,10 +1,8 @@
 package com.example.igor.androidtask2;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,16 +11,14 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
 import com.example.igor.androidtask2.adapter.CategoriesAdapter;
 import com.example.igor.androidtask2.entity.CategoryEntity;
 
 import java.util.ArrayList;
 
-public class CategoriesFragment extends Fragment {
+public class CategoriesFragment extends BaseFragment {
 
     final static int CATEGORIES_LAYOUT_SPAN_COUNT   =   2;
 
@@ -52,19 +48,17 @@ public class CategoriesFragment extends Fragment {
 
         recyclerCategories = v.findViewById(R.id.recyclerCategory);
         CategoriesAdapter categoriesAdapter = new CategoriesAdapter(getCategories());
-        recyclerCategories.setLayoutManager(new GridLayoutManager(v.getContext(), CATEGORIES_LAYOUT_SPAN_COUNT));
+        recyclerCategories.setLayoutManager(new GridLayoutManager(getContext(), CATEGORIES_LAYOUT_SPAN_COUNT));
         recyclerCategories.setHasFixedSize(true);
         recyclerCategories.setAdapter(categoriesAdapter);
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Помощь");
+
         getActivity().findViewById(R.id.heartButton).setBackgroundResource(R.drawable.button_green_heart);
 
-        ((FloatingSearchView)getActivity().findViewById(R.id.searchView)).clearQuery();
-
-        getActivity().findViewById(R.id.searchView).setVisibility(View.GONE);
-
-        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
-        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationOnClickListener(new View.OnClickListener() {
+        Toolbar toolbar = getActivity().findViewById(R.id.toolBar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().finish();
@@ -85,9 +79,10 @@ public class CategoriesFragment extends Fragment {
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.searchMenu).setVisible(false);
-        menu.findItem(R.id.profileMenu).setVisible(false);
-        super.onPrepareOptionsMenu(menu);
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().findViewById(R.id.heartButton).setBackgroundResource(R.drawable.button_red_heart);
+
+        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
     }
 }

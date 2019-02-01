@@ -1,10 +1,12 @@
 package com.example.igor.androidtask2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -22,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private FloatingSearchView searchView;
     private BottomNavigationView navigationView;
     private ImageButton heartButton;
+
+    public static final String SELECTED_MENU_ITEM_KEY   = "SelectedMenuItemId";
+    public static final String SEARCH_KEY               = "SearchVisibility";
 
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -53,18 +58,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (getIntent().getBooleanExtra("finish", false)) finish();
 
-
         setContentView(R.layout.main_layout);
-
 
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         searchView = findViewById(R.id.searchView);
-        searchView.setQueryTextSize(14);
-        searchView.setQueryTextColor(R.color.black__38);
-        searchView.setDismissOnOutsideClick(true);
 
         navigationView = findViewById(R.id.menu);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -79,56 +79,29 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadFragment(Fragment fragment){
+    public void loadFragment(Fragment fragment){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fl_content, fragment);
         ft.commit();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_search, menu);
-        MenuItem searchItem = menu.findItem(R.id.searchMenu);
-        searchItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                searchView.setVisibility(View.VISIBLE);
-
-                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.search_scale_on);
-                searchView.startAnimation(anim);
-
-                return false;
-            }
-        });
-
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
-        menu.findItem(R.id.profileMenu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("SelectedItemId", navigationView.getSelectedItemId());
+        outState.putInt(SELECTED_MENU_ITEM_KEY, navigationView.getSelectedItemId());
+        outState.putInt(SEARCH_KEY, searchView.getVisibility());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        int selectedItemId = savedInstanceState.getInt("SelectedItemId");
-        navigationView.setSelectedItemId(selectedItemId);
+        navigationView.setSelectedItemId(savedInstanceState.getInt(SELECTED_MENU_ITEM_KEY));
+        searchView.setVisibility(savedInstanceState.getInt(SEARCH_KEY));
     }
 
     @Override
     public void onBackPressed() {
-        if (searchView.getVisibility() == View.VISIBLE) {
-            searchView.setVisibility(View.GONE);
-
-            Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.search_scale_of);
-            searchView.startAnimation(anim);
-            searchView.clearQuery();
-        } else {
-            super.onBackPressed();
-        }
+        LocalBroadcastManager mgr = LocalBroadcastManager.getInstance(this);
+        mgr.sendBroadcast(new Intent(BaseFragment.ACTION_BACK_PRESSED));
     }
 }

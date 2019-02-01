@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.igor.androidtask2.ExampleFragment;
@@ -21,12 +22,6 @@ public class TabsPagerFragmentAdapter extends FragmentStatePagerAdapter {
             "По мероприятиям",
             "По НКО"
         };
-    }
-
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
     }
 
     @Override

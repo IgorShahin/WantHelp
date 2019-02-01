@@ -3,21 +3,21 @@ package com.example.igor.androidtask2;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arlib.floatingsearchview.FloatingSearchView;
 import com.example.igor.androidtask2.dialog.ProfileDialog;
 
-public class ProfileFragment extends Fragment {
-
-    ImageView profileImage;
+public class ProfileFragment extends BaseFragment {
 
     public static ProfileFragment newInstance(){
         Bundle args = new Bundle();
@@ -37,36 +37,30 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.profile_layout, container, false);
-        profileImage = v.findViewById(R.id.imageProfile);
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
 
         ((TextView)getActivity().findViewById(R.id.text_toolbar)).setText("Профиль");
 
         getActivity().findViewById(R.id.heartButton).setBackgroundResource(R.drawable.button_red_heart);
 
-        ((Toolbar)getActivity().findViewById(R.id.toolBar)).setNavigationIcon(null);
-
-        ((FloatingSearchView)getActivity().findViewById(R.id.searchView)).clearQuery();
-
-        getActivity().findViewById(R.id.searchView).setVisibility(View.GONE);
-
         return v;
     }
 
-    public void openDialog(){
-        ProfileDialog profileDialog = new ProfileDialog();
-        profileDialog.show(getFragmentManager(), "ex");
+    @Override
+    protected void onReceiveBackPressed() {
+        ((BottomNavigationView)getActivity().findViewById(R.id.menu)).setSelectedItemId(R.id.fragment_heart);
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.searchMenu).setVisible(false);
-        menu.findItem(R.id.profileMenu).setVisible(true);
-        super.onPrepareOptionsMenu(menu);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_profile, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.editProfile){
+            ((MainActivity)getActivity()).loadFragment(EditProfileFragment.newInstance());
+        }
+        return true;
     }
 }

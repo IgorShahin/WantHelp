@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -27,10 +29,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // BottomNavigationView
     implementation 'com.android.support:design:28.0.0'
 
-    // RecyclerView
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
@@ -38,4 +38,13 @@ dependencies {
     implementation "com.android.support:support-v4:+"
 
     implementation 'com.github.arimorty:floatingsearchview:2.1.1'
+
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-script-runtime:1.3.20"
+
+    implementation 'com.marlonmafra.android.widget:edittext-password:1.0.0'
+}
+repositories {
+    mavenCentral()
 }

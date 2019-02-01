@@ -15,6 +15,7 @@
         android:id="@+id/searchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:floatingSearch_close_search_on_keyboard_dismiss="true"
         app:floatingSearch_dismissOnOutsideTouch="true"
         app:floatingSearch_leftActionMode="showSearch"
@@ -80,7 +81,6 @@
         app:layout_constraintStart_toStartOf="@+id/menuPanel"/>
 
     <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"

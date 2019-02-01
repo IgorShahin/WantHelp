@@ -11,12 +11,10 @@
         android:id="@+id/fragment_search"
         android:icon="@drawable/searh"
         android:title="@string/search_menu"
-        android:enabled="true"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/fragment_heart"
         android:title="@string/help_menu"
-        android:enabled="true"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/fragment_history"
@@ -26,7 +24,6 @@
     <item
         android:id="@+id/fragment_profile"
         android:icon="@drawable/profile"
-        android:enabled="true"
         android:title="@string/profile_menu" />
 
 </menu>

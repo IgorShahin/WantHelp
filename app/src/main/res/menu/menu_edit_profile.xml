@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/editProfile"
+        android:id="@+id/editSave"
         android:title="Введите название организации"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/edit" />
+        android:icon="@drawable/ok" />
 
 </menu>
